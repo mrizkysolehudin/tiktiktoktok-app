@@ -1,49 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoVerified } from "react-icons/go";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import Link from "next/link";
+import Image from "next/image";
 
-const VideoCard = () => {
+const VideoCard = ({ videoPosted }) => {
+	const videoRef = useRef(null);
+
 	const [muted, setMuted] = useState(true);
-	const [played, setPlayed] = useState(false);
+	const [playing, setPlaying] = useState(false);
+
+	const handlePressVideo = () => {
+		if (playing) {
+			videoRef?.current?.pause();
+			setPlaying(false);
+		} else {
+			videoRef?.current?.play();
+			setPlaying(true);
+		}
+	};
+
+	useEffect(() => {
+		if (videoRef.current) {
+			videoRef.current.muted = muted;
+		}
+	}, [muted]);
 
 	return (
-		<div className="divide-y-[1.5px] divide-slate-300 pb-20">
-			<article className="w-[93%] py-10">
+		<div className="pt-10">
+			<article className="w-[93%]">
 				<div className="flex items-start gap-x-4">
-					<p className="flex h-16 w-16 items-center  justify-center rounded-full bg-blue-600">
-						L
-					</p>
+					<div className="relative h-16 w-16">
+						<Image
+							src={videoPosted?.postedBy?.image}
+							fill
+							className="rounded-full "
+						/>
+					</div>
 
 					<div className="flex items-center">
-						<h5 className=" font-bold">Buebeubeu </h5>
+						<h5 className=" font-bold">
+							{videoPosted?.postedBy?.userName}
+						</h5>
 						<span className="ml-2 text-blue-500">
 							<GoVerified />
 						</span>
 						<p className="ml-3 text-sm font-medium text-gray-600">
-							buebeueu
+							{videoPosted?.postedBy?.userName}
 						</p>
 					</div>
 				</div>
 
-				<div className="-mt-7 ml-20 text-sm">
-					<p className="">
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Voluptate velit amet facere molestias natus eaque
-						consequatur iusto ullam unde perferendis ad, officiis
-						non repudiandae odit tempore quas odio quo
-						reprehenderit!
-					</p>
+				<div className="-mt-7 ml-20">
+					<p className="">{videoPosted?.caption}</p>
 
-					<div className="relative mt-7  rounded-2xl bg-gray-100 py-24">
+					<div className="relative mt-4 rounded-2xl bg-gray-100 py-24">
 						<Link href="/detail/:id">
-							<video src="https://cdn.sanity.io/files/k3lpsyu4/production/bddb55e86ea0fcc3037a084ed813f43c63656974.mp4"></video>
+							<video
+								loop
+								ref={videoRef}
+								src={videoPosted?.video?.asset?.url}
+								className="w-full"></video>
 						</Link>
 
 						<div className="absolute bottom-8 mx-20 flex  w-9/12 justify-between">
-							<button onClick={() => setPlayed(!played)}>
-								{played ? (
+							<button onClick={() => handlePressVideo()}>
+								{playing ? (
 									<BsFillPauseFill className="h-7 w-7" />
 								) : (
 									<BsFillPlayFill className="h-7 w-7" />
