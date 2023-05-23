@@ -32,7 +32,7 @@ const Navbar = () => {
 
 				<div className="flex gap-x-10">
 					<Link
-						href=""
+						href="/upload"
 						className="flex items-center rounded border-2 border-gray-300  px-3 font-semibold">
 						<span className="-mt-1 mr-2 text-3xl">+</span>
 						Upload
