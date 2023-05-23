@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
 				<div className="h-[92vh] overflow-hidden hover:overflow-auto">
 					<Sidebar />
 				</div>
-				<div className="mt-4 flex h-[97vh] flex-1 flex-col gap-10 overflow-auto">
+				<div className="mt-4 flex h-[97vh] flex-1 flex-col gap-10 overflow-auto scrollbar-hide">
 					<Component {...pageProps} />
 				</div>
 			</div>
