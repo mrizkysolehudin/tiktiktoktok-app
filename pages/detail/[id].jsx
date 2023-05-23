@@ -1,5 +1,6 @@
 import CommentSection from "@/components/CommentSection";
 import LoveButton from "@/components/LoveButton";
+import Link from "next/link";
 import React, { useState } from "react";
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
@@ -10,9 +11,9 @@ const Detail = () => {
 	const [muted, setMuted] = useState(false);
 
 	return (
-		<div className="absolute left-0 top-0 z-30 flex w-full flex-nowrap bg-white">
-			<section className="flex-2  flex w-9/12 items-center justify-center bg-orange-800 bg-cover bg-center bg-no-repeat">
-				<div className="relative mx-2">
+		<div className="absolute left-0 top-0 z-30 flex w-full bg-white">
+			<section className="flex-2  flex w-9/12 items-center justify-center bg-orange-800 ">
+				<div className="relative mx-2 -mt-36">
 					<video src="https://cdn.sanity.io/files/k3lpsyu4/production/bddb55e86ea0fcc3037a084ed813f43c63656974.mp4"></video>
 
 					<div className="absolute bottom-8 mx-20 flex  w-9/12 justify-between">
@@ -37,7 +38,11 @@ const Detail = () => {
 			<section className="relative w-[700px]">
 				<article className="px-10  pt-14">
 					<div className="flex gap-x-4">
-						<p className="h-14 w-14 rounded-full bg-blue-500">L</p>
+						<Link
+							href="/profile/:id"
+							className="h-14 w-14 rounded-full bg-blue-500">
+							L
+						</Link>
 						<div>
 							<p className="flex items-center gap-x-2 font-bold">
 								bueubeuebbue{" "}
