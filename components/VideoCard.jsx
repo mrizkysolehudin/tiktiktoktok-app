@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GoVerified } from "react-icons/go";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
+import Link from "next/link";
 
 const VideoCard = () => {
 	const [muted, setMuted] = useState(true);
@@ -36,7 +37,9 @@ const VideoCard = () => {
 					</p>
 
 					<div className="relative mt-7  rounded-2xl bg-gray-100 py-24">
-						<video src="https://cdn.sanity.io/files/k3lpsyu4/production/bddb55e86ea0fcc3037a084ed813f43c63656974.mp4"></video>
+						<Link href="/detail/:id">
+							<video src="https://cdn.sanity.io/files/k3lpsyu4/production/bddb55e86ea0fcc3037a084ed813f43c63656974.mp4"></video>
+						</Link>
 
 						<div className="absolute bottom-8 mx-20 flex  w-9/12 justify-between">
 							<button onClick={() => setPlayed(!played)}>

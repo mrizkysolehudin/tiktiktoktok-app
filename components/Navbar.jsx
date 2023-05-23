@@ -7,16 +7,16 @@ import { BiSearch } from "react-icons/bi";
 
 const Navbar = () => {
 	return (
-		<div className="fixed left-0 top-0 z-50 w-full bg-white">
+		<div className="fixed left-0 top-0 z-20 w-full bg-white">
 			<div className="mx-10 flex h-16 items-center justify-between border-b-2 border-gray-200 px-4 ">
-				<div className="relative h-10 w-32">
+				<Link href="/" className="relative h-10 w-32">
 					<Image
 						src={logo}
 						fill
 						alt="tiktik-logo"
 						className=" cursor-pointer"
 					/>
-				</div>
+				</Link>
 
 				<div className="relative">
 					<input
