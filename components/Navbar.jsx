@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../public/tiktik-logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineLogout } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+	const router = useRouter();
+
+	const [searchInputValue, setSearchInputValue] = useState("");
+
+	const handleSearch = async (e) => {
+		e.preventDefault();
+
+		if (searchInputValue) {
+			router.push(`/search/${searchInputValue}`);
+		}
+	};
+
 	return (
 		<div className="fixed left-0 top-0 z-20 w-full bg-white">
 			<div className="mx-10 flex h-16 items-center justify-between border-b-2 border-gray-200 px-4 ">
@@ -18,17 +31,21 @@ const Navbar = () => {
 					/>
 				</Link>
 
-				<div className="relative">
+				<form onSubmit={handleSearch} className="relative">
 					<input
 						type="text"
+						value={searchInputValue}
+						onChange={(e) => setSearchInputValue(e.target.value)}
 						placeholder="Search accounts and videos"
 						className="h-12 w-80 rounded-3xl bg-gray-200 px-5 outline-gray-300"
 					/>
 
-					<div className="absolute right-5 top-2 flex h-8 items-center border-l-2 border-gray-300 pl-3  text-gray-500 ">
+					<button
+						type="submit"
+						className="absolute right-5 top-2 flex h-8 items-center border-l-2 border-gray-300 pl-3  text-gray-500 ">
 						<BiSearch className="h-6 w-6" />
-					</div>
-				</div>
+					</button>
+				</form>
 
 				<div className="flex gap-x-10">
 					<Link
