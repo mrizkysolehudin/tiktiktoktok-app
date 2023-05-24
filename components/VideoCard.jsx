@@ -31,14 +31,16 @@ const VideoCard = ({ videoPosted }) => {
 		<div className="pt-10">
 			<article className="w-[93%]">
 				<div className="flex items-start gap-x-4">
-					<div className="relative h-16 w-16">
+					<Link
+						href={`/profile/${videoPosted?._id}`}
+						className="relative h-16 w-16">
 						<Image
 							alt="Profile-image"
 							src={videoPosted?.postedBy?.image}
 							fill
 							className="rounded-full "
 						/>
-					</div>
+					</Link>
 
 					<div className="flex items-center">
 						<h5 className=" font-bold">

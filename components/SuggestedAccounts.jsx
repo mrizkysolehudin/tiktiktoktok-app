@@ -1,5 +1,6 @@
 import useAuthStore from "@/store/authStore";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { GoVerified } from "react-icons/go";
 
@@ -13,8 +14,9 @@ const SuggestedAccounts = () => {
 			<div className="-ml-2 mt-2 flex flex-col ">
 				{allUsers.length ? (
 					allUsers?.map((account, index) => (
-						<button
+						<Link
 							key={index}
+							href={`/profile/${account?._id}`}
 							className="flex  gap-x-3 rounded px-3 pb-1 hover:bg-gray-200">
 							<div className="relative mt-2 h-8  w-8">
 								<Image
@@ -32,7 +34,7 @@ const SuggestedAccounts = () => {
 									{account?.userName}
 								</p>
 							</div>
-						</button>
+						</Link>
 					))
 				) : (
 					<div className="ml-3 font-bold text-gray-400">
