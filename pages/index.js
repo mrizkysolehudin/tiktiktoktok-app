@@ -17,9 +17,13 @@ export default function Home({ videosPosted }) {
 	);
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query: { topic } }) {
 	let res;
-	res = await axios.get(`${BASE_URL}/api/post`);
+	if (topic) {
+		res = await axios.get(`${BASE_URL}/api/popularTopics/${topic}`);
+	} else {
+		res = await axios.get(`${BASE_URL}/api/post`);
+	}
 
 	return {
 		props: {

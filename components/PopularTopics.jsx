@@ -1,4 +1,5 @@
 import { topics } from "@/utils/constants";
+import Link from "next/link";
 import React from "react";
 
 const PopularTopics = () => {
@@ -7,12 +8,15 @@ const PopularTopics = () => {
 			<h3 className="ml-2 font-semibold text-gray-600">Popular Topics</h3>
 
 			<div className="mt-4 flex flex-wrap gap-3">
-				{topics.map((topic) => (
-					<button className="flex items-center gap-x-3 rounded-full border-2 border-gray-300 px-3 py-1 font-semibold capitalize hover:bg-gray-100">
+				{topics.map((topic, index) => (
+					<Link
+						href={`/?topic=${topic.name}`}
+						key={index}
+						className="flex items-center gap-x-3 rounded-full border-2 border-gray-300 px-3 py-1 font-semibold capitalize hover:bg-gray-100">
 						<p className="text-2xl">{topic.icon}</p>
 
 						<p>{topic.name}</p>
-					</button>
+					</Link>
 				))}
 			</div>
 		</div>
