@@ -33,6 +33,7 @@ const VideoCard = ({ videoPosted }) => {
 				<div className="flex items-start gap-x-4">
 					<div className="relative h-16 w-16">
 						<Image
+							alt="Profile-image"
 							src={videoPosted?.postedBy?.image}
 							fill
 							className="rounded-full "

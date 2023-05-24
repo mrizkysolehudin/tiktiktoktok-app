@@ -86,3 +86,9 @@ likes,
   }`;
 	return query;
 };
+
+export const singleUserQuery = (userId) => {
+	const query = `*[_type == "user" && _id == '${userId}']`;
+
+	return query;
+};
