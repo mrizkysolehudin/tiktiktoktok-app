@@ -1,12 +1,27 @@
 import NoResult from "@/components/NoResult";
 import VideoCard from "@/components/VideoCard";
+import useAuthStore from "@/store/authStore";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
-import React, { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { GoVerified } from "react-icons/go";
 
 const SearchPage = ({ searchVideosResult }) => {
 	const [isAccounts, setIsAccounts] = useState(false);
+
+	const { allUsers, fetchAllUsers } = useAuthStore();
+	const router = useRouter();
+	const { searchTerm } = router.query;
+
+	useEffect(() => {
+		fetchAllUsers();
+	}, []);
+
+	const allAccounts = allUsers.filter((user) =>
+		user.userName.toLowerCase().includes(searchTerm.toLowerCase())
+	);
 
 	return (
 		<div>
@@ -33,19 +48,31 @@ const SearchPage = ({ searchVideosResult }) => {
 
 			{isAccounts ? (
 				<section className="mt-7">
-					<div className="flex gap-x-3 border-b-2 border-gray-300 pb-2">
-						<p className="h-12 w-12 rounded-full bg-blue-500">L</p>
+					{allAccounts?.length ? (
+						allAccounts?.map((account) => (
+							<div className="flex gap-x-3 border-b-2 border-gray-300 pb-2">
+								<div className="relative h-12 w-12">
+									<Image
+										src={account?.image}
+										fill
+										className="rounded-full"
+									/>
+								</div>
 
-						<div>
-							<p className="flex items-center gap-x-2 text-xl font-bold">
-								bubuebueubeube{" "}
-								<GoVerified className="text-blue-500" />
-							</p>
-							<p className=" text-sm font-medium text-gray-400">
-								buebuebue
-							</p>
-						</div>
-					</div>
+								<div>
+									<p className="flex items-center gap-x-2 text-xl font-bold">
+										{account?.userName}{" "}
+										<GoVerified className="text-blue-500" />
+									</p>
+									<p className=" text-sm font-medium text-gray-400">
+										{account?.userName}
+									</p>
+								</div>
+							</div>
+						))
+					) : (
+						<NoResult />
+					)}
 				</section>
 			) : searchVideosResult?.length ? (
 				<article>
