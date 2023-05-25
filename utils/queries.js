@@ -162,3 +162,32 @@ export const userLikedPostsQuery = (userId) => {
 
 	return query;
 };
+
+export const postDetailQuery = (postId) => {
+	const query = `*[_type == "post" && _id == '${postId}']{
+    _id,
+     caption,
+       video{
+        asset->{
+          _id,
+          url
+        }
+      },
+      userId,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+     likes,
+    comments[]{
+      comment,
+      _key,
+      postedBy->{
+        _ref,
+      _id,
+    },
+    }
+  }`;
+	return query;
+};

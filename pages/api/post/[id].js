@@ -8,8 +8,6 @@ export default async function handler(req, res) {
 
 		const data = await client.fetch(query);
 
-		res.status(200).json(data);
-
-		// client.fetch(postDetailQuery(id)).then((res) => res.status(200).json(data));
+		res.status(200).json(data[0]);
 	}
 }

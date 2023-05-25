@@ -32,12 +32,12 @@ const VideoCard = ({ videoPosted }) => {
 			<article className="w-[93%]">
 				<div className="flex items-start gap-x-4">
 					<Link
-						href={`/profile/${videoPosted?._id}`}
+						href={`/profile/${videoPosted?.postedBy?._id}`}
 						className="relative h-16 w-16">
 						<Image
-							alt="Profile-image"
-							src={videoPosted?.postedBy?.image}
 							fill
+							src={videoPosted?.postedBy?.image}
+							alt="Profile-image"
 							className="rounded-full "
 						/>
 					</Link>
@@ -59,7 +59,7 @@ const VideoCard = ({ videoPosted }) => {
 					<p className="">{videoPosted?.caption}</p>
 
 					<div className="relative mt-4 rounded-2xl bg-gray-100 py-24">
-						<Link href="/detail/:id">
+						<Link href={`/detail/${videoPosted?._id}`}>
 							<video
 								loop
 								ref={videoRef}

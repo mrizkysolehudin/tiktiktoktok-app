@@ -22,6 +22,7 @@ const SuggestedAccounts = () => {
 								<Image
 									fill
 									src={account?.image}
+									alt="profile-image"
 									className="rounded-full"
 								/>
 							</div>
