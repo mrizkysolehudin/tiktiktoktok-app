@@ -16,6 +16,8 @@ const Detail = ({ detailPost }) => {
 	const [playing, setPlaying] = useState(false);
 	const [isMuted, setIsMuted] = useState(false);
 	const [post, setPost] = useState(detailPost);
+	const [comment, setComment] = useState("");
+	const [isPostingComment, setIsPostingComment] = useState(false);
 
 	const router = useRouter();
 	const videoRef = useRef();
@@ -32,7 +34,7 @@ const Detail = ({ detailPost }) => {
 	};
 
 	useEffect(() => {
-		if (videoRef.current) {
+		if (post && videoRef.current) {
 			videoRef.current.muted = isMuted;
 		}
 	}, [isMuted]);
@@ -48,6 +50,28 @@ const Detail = ({ detailPost }) => {
 			setPost({ ...post, likes: data?.likes });
 		}
 	};
+
+	const addComment = async (e) => {
+		e.preventDefault();
+
+		if (userProfile && comment) {
+			setIsPostingComment(true);
+
+			const { data } = await axios.put(
+				`${BASE_URL}/api/post/${post?._id}`,
+				{
+					userId: userProfile?._id,
+					comment: comment,
+				}
+			);
+
+			setPost({ ...post, comments: data?.comments });
+			setComment("");
+			setIsPostingComment(false);
+		}
+	};
+
+	if (!post) return "No detail post founded";
 
 	return (
 		<div className="absolute left-0 top-0 z-30 flex w-full bg-white">
@@ -122,7 +146,13 @@ const Detail = ({ detailPost }) => {
 					</div>
 				</article>
 
-				<CommentSection />
+				<CommentSection
+					comment={comment}
+					addComment={addComment}
+					setComment={setComment}
+					allComments={post?.comments}
+					isPostingComment={isPostingComment}
+				/>
 			</section>
 		</div>
 	);
