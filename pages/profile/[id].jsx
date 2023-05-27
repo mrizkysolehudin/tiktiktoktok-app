@@ -11,8 +11,8 @@ const Profile = ({ data }) => {
 
 	return (
 		<div>
-			<section className="mt-2 flex items-center gap-x-11">
-				<div className="relative h-28 w-28">
+			<section className="mt-2 flex items-center gap-x-2 sm:gap-x-11">
+				<div className="relative h-9 w-9 sm:h-28 sm:w-28">
 					<Image
 						src={data?.dataAccount?.image}
 						fill
@@ -21,11 +21,11 @@ const Profile = ({ data }) => {
 				</div>
 
 				<div>
-					<h3 className="flex items-center gap-x-2 text-2xl font-bold">
+					<h3 className="flex items-center gap-x-2 text-sm font-bold sm:text-2xl">
 						{data?.dataAccount?.userName}{" "}
 						<GoVerified className="text-blue-500" />
 					</h3>
-					<p className="-mt-0.5 text-gray-500">
+					<p className="-mt-0.5  text-xs text-gray-500 md:text-base">
 						{data?.dataAccount?.userName}
 					</p>
 				</div>
@@ -51,13 +51,13 @@ const Profile = ({ data }) => {
 
 				{showUserVideos ? (
 					data?.dataUserVideos?.map((userVideos, index) => (
-						<div className="mb-28">
+						<div className="mb-8 lg:mb-28">
 							<VideoCard key={index} videoPosted={userVideos} />
 						</div>
 					))
 				) : data?.dataLikedVideos.length ? (
 					data?.dataLikedVideos?.map((likedVideos, index) => (
-						<div className="mb-28">
+						<div className="mb-8 lg:mb-28">
 							<VideoCard key={index} videoPosted={likedVideos} />
 						</div>
 					))
