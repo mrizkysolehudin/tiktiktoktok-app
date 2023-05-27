@@ -25,7 +25,7 @@ const Navbar = () => {
 
 	return (
 		<div className="fixed left-0 top-0 z-20 w-full bg-white">
-			<div className="mx-10 flex h-16 items-center justify-between border-b-2 border-gray-200 px-4 ">
+			<div className="flex h-16 items-center justify-between border-b-2 border-gray-200 px-4 lg:mx-10 ">
 				<Link href="/" className="relative h-10 w-32">
 					<Image
 						src={logo}
@@ -35,29 +35,31 @@ const Navbar = () => {
 					/>
 				</Link>
 
-				<form onSubmit={handleSearch} className="relative">
+				<form
+					onSubmit={handleSearch}
+					className="relative hidden xl:block">
 					<input
 						type="text"
 						value={searchInputValue}
 						onChange={(e) => setSearchInputValue(e.target.value)}
 						placeholder="Search accounts and videos"
-						className="h-12 w-80 rounded-3xl bg-gray-200 px-5 outline-gray-300"
+						className="h-8 rounded-3xl bg-gray-200 px-5 text-sm outline-gray-300 placeholder:text-sm lg:text-base xl:h-12 xl:w-80"
 					/>
 
 					<button
 						type="submit"
-						className="absolute right-5 top-2 flex h-8 items-center border-l-2 border-gray-300 pl-3  text-gray-500 ">
+						className="absolute right-5  top-2  flex h-8 items-center border-l-2 border-gray-300 pl-3  text-gray-500 ">
 						<BiSearch className="h-6 w-6" />
 					</button>
 				</form>
 
 				{userProfile ? (
-					<div className="flex gap-x-10">
+					<div className="flex gap-x-5 lg:gap-x-10">
 						<Link
 							href="/upload"
 							className="flex items-center rounded border-2 border-gray-300 px-3  font-semibold hover:bg-gray-100">
-							<span className="-mt-1 mr-2 text-3xl">+</span>
-							Upload
+							<span className="-mt-1 text-3xl lg:mr-2">+</span>
+							<span className="hidden lg:block">Upload</span>
 						</Link>
 						<button className="relative h-10 w-10 rounded-full">
 							<Image
@@ -73,7 +75,7 @@ const Navbar = () => {
 								googleLogout();
 								removeUser();
 							}}
-							className="mr-6 rounded-full p-2 hover:bg-gray-200">
+							className="rounded-full p-2 hover:bg-gray-200 lg:mr-6">
 							<AiOutlineLogout color="red" fontSize={21} />
 						</button>
 					</div>

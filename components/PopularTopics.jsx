@@ -6,8 +6,10 @@ const PopularTopics = () => {
 	const [currentTopic, setCurrentTopic] = useState("");
 
 	return (
-		<div className="my-2  border-b-2 border-gray-200 pb-6 pt-2">
-			<h3 className="ml-2 font-semibold text-gray-600">Popular Topics</h3>
+		<div className="my-2 border-b-2 border-gray-200 pb-6 pt-2">
+			<h3 className="ml-2 hidden font-semibold text-gray-600 xl:block">
+				Popular Topics
+			</h3>
 
 			<div className="mt-4 flex flex-wrap gap-3">
 				{topics.map((topic, index) => (
@@ -19,10 +21,10 @@ const PopularTopics = () => {
 							currentTopic == topic.name
 								? "border-pink-600 text-pink-600"
 								: "border-gray-300"
-						} flex items-center gap-x-3 rounded-full border-2  px-3 py-1 font-semibold capitalize hover:bg-gray-100`}>
+						} flex items-center gap-x-3 rounded-full px-3  py-1 font-semibold capitalize hover:bg-gray-100 xl:border-2`}>
 						<p className="text-2xl">{topic.icon}</p>
 
-						<p>{topic.name}</p>
+						<p className="hidden xl:block">{topic.name}</p>
 					</Link>
 				))}
 			</div>

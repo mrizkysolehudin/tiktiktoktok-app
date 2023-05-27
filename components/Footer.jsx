@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<div className="px-4 pt-4 text-sm text-gray-400">
+		<div className="hidden px-4 pt-4 text-sm text-gray-400 xl:block">
 			<div className="flex flex-wrap gap-x-2 gap-y-2 py-2 ">
 				{footerList1.map((item, index) => (
 					<p

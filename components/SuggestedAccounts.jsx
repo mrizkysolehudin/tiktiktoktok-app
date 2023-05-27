@@ -8,7 +8,7 @@ const SuggestedAccounts = () => {
 	const { allUsers } = useAuthStore();
 
 	return (
-		<div className=" border-b-2 border-gray-200 px-6 pb-5 pt-2">
+		<div className=" hidden border-b-2 border-gray-200 px-6 pb-5 pt-2 xl:block">
 			<h3 className="font-semibold text-gray-600">Suggested accounts</h3>
 
 			<div className="-ml-2 mt-2 flex flex-col ">
