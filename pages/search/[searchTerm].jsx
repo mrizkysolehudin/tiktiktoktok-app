@@ -51,7 +51,7 @@ const SearchPage = ({ searchVideosResult }) => {
 					{allAccounts?.length ? (
 						allAccounts?.map((account) => (
 							<div className="flex gap-x-3 border-b-2 border-gray-300 pb-2">
-								<div className="relative h-12 w-12">
+								<div className="relative h-10 w-10 sm:h-12 sm:w-12">
 									<Image
 										src={account?.image}
 										fill
@@ -60,7 +60,7 @@ const SearchPage = ({ searchVideosResult }) => {
 								</div>
 
 								<div>
-									<p className="flex items-center gap-x-2 text-xl font-bold">
+									<p className="flex items-center gap-x-2 font-bold sm:text-xl">
 										{account?.userName}{" "}
 										<GoVerified className="text-blue-500" />
 									</p>
@@ -77,7 +77,9 @@ const SearchPage = ({ searchVideosResult }) => {
 			) : searchVideosResult?.length ? (
 				<article>
 					{searchVideosResult?.map((video, index) => (
-						<VideoCard key={index} videoPosted={video} />
+						<div className="mb-10">
+							<VideoCard key={index} videoPosted={video} />
+						</div>
 					))}
 				</article>
 			) : (
