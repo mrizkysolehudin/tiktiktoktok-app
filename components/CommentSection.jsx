@@ -14,7 +14,7 @@ const CommentSection = ({
 	const { allUsers, userProfile } = useAuthStore();
 
 	return (
-		<div className="mt-4 border-b-2 border-t-2 border-gray-200 bg-[#F8F8F8] px-10  pt-4">
+		<div className="mt-4 border-b-2 border-t-2 border-gray-200  bg-[#F8F8F8] px-10  pt-4">
 			<section className="h-[457px] overflow-scroll scrollbar-hide">
 				{allComments?.length > 0 ? (
 					allComments?.map((commentItem, index) => (
@@ -61,13 +61,13 @@ const CommentSection = ({
 			{userProfile && (
 				<form
 					onSubmit={addComment}
-					className="mt-3  pb-7 text-gray-400">
+					className="ml-0 mt-3 pb-7 text-gray-400 sm:ml-16 lg:ml-0">
 					<input
 						type="text"
 						value={comment}
 						onChange={(e) => setComment(e.target.value.trim())}
 						placeholder="enter comment..."
-						className="h-12 w-9/12 rounded-l-md bg-gray-200 px-4 outline-gray-300"
+						className="h-12 w-7/12 rounded-l-md bg-gray-200 px-4 outline-gray-300 sm:w-9/12"
 					/>
 					<button
 						onClick={addComment}

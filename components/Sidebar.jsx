@@ -4,6 +4,7 @@ import { ImCancelCircle } from "react-icons/im";
 import PopularTopics from "./PopularTopics";
 import SuggestedAccounts from "./SuggestedAccounts";
 import Footer from "./Footer";
+import Link from "next/link";
 
 const Sidebar = () => {
 	const [hideMenu, setHideMenu] = useState(false);
@@ -11,10 +12,12 @@ const Sidebar = () => {
 	return (
 		<div className="mb-6 flex w-[70px] flex-col justify-start border-0 border-gray-100 p-3 xl:w-[400px] ">
 			<div className="border-b-2 border-gray-200">
-				<button className="mb-3 flex w-full items-center gap-x-3 px-3 py-4 text-2xl font-semibold hover:bg-black/10">
+				<Link
+					href="/"
+					className="mb-3 flex w-full items-center gap-x-3 px-3 py-4 text-2xl font-semibold hover:bg-black/10">
 					<AiFillHome />{" "}
 					<span className="hidden text-xl xl:block">For You</span>
-				</button>
+				</Link>
 			</div>
 
 			<div className="ml-3 mt-4 text-2xl xl:hidden">

@@ -76,9 +76,9 @@ const Detail = ({ detailPost }) => {
 	if (!post) return "No detail post founded";
 
 	return (
-		<div className="absolute left-0 top-0 z-30 flex w-full bg-white">
-			<section className="flex-2  flex w-9/12 items-center justify-center bg-orange-800 ">
-				<article className="-mt-60">
+		<div className="absolute left-0 top-0 z-30 flex w-full flex-wrap bg-white lg:flex-nowrap">
+			<section className="flex-2 flex w-full items-center justify-center bg-orange-800 xl:w-9/12 ">
+				<article className="my-28 xl:my-0 xl:-mt-60">
 					<button onClick={() => router.back()}>
 						<MdCancel className="absolute top-0 m-6 text-4xl text-gray-300 hover:text-gray-300/80" />
 					</button>
@@ -113,7 +113,7 @@ const Detail = ({ detailPost }) => {
 				</article>
 			</section>
 
-			<section className="relative w-[700px]">
+			<section className="relative w-full xl:w-[700px]">
 				<article className="px-10  pt-14">
 					<div className="flex gap-x-4">
 						<Link

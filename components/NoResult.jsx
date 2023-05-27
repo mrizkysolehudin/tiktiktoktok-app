@@ -5,8 +5,8 @@ import { CgProfile } from "react-icons/cg";
 
 const NoResult = ({ text }) => {
 	return (
-		<div className="mt-40 flex w-full flex-col items-center justify-center">
-			<p className="text-8xl">
+		<div className="mt-40 flex w-full flex-col  items-center sm:justify-center">
+			<p className="text-5xl md:text-8xl">
 				{text === "No Videos" ? (
 					<MdOutlineVideocamOff />
 				) : text === "No Accounts" ? (
@@ -15,7 +15,7 @@ const NoResult = ({ text }) => {
 					<BiCommentX />
 				)}
 			</p>
-			<p className="text-center text-2xl">{text}</p>
+			<p className=" text-2xl">{text}</p>
 		</div>
 	);
 };

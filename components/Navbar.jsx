@@ -37,7 +37,7 @@ const Navbar = () => {
 
 				<form
 					onSubmit={handleSearch}
-					className="relative hidden xl:block">
+					className="relative hidden md:block">
 					<input
 						type="text"
 						value={searchInputValue}
@@ -48,7 +48,7 @@ const Navbar = () => {
 
 					<button
 						type="submit"
-						className="absolute right-5  top-2  flex h-8 items-center border-l-2 border-gray-300 pl-3  text-gray-500 ">
+						className="absolute right-5 top-2 flex h-8  items-center border-l-2 border-gray-300 pl-3 text-gray-500 opacity-0  xl:opacity-100 ">
 						<BiSearch className="h-6 w-6" />
 					</button>
 				</form>
