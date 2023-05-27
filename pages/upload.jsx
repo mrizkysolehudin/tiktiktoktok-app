@@ -69,15 +69,15 @@ const Upload = () => {
 	};
 
 	return (
-		<div className="absolute left-0 top-16  w-full bg-gray-100 pb-10">
-			<div className="mx-auto mt-10 max-w-5xl rounded-xl bg-white px-14 py-10">
+		<div className="absolute left-0 top-16  min-h-screen w-full bg-gray-100 pb-10">
+			<div className="mx-auto mt-10 rounded-xl bg-white px-14 py-10 sm:py-40 xl:max-w-5xl xl:py-10">
 				<h3 className="text-3xl font-bold">Upload video</h3>
 				<p className="mt-2 text-gray-400">
 					Post a video to your account
 				</p>
 
-				<form onSubmit={handlePost} className="mt-10 flex gap-x-5">
-					<section className="group relative h-96 w-[27%] rounded-xl border-4 border-dashed border-gray-300 p-6 hover:border-orange-400 hover:bg-gray-100">
+				<form onSubmit={handlePost} className="mt-10 gap-x-5 sm:flex ">
+					<section className="group relative h-96 rounded-xl border-4 border-dashed border-gray-300 p-6 pl-10 hover:border-orange-400 hover:bg-gray-100 sm:w-[37%] sm:pl-7 md:w-[45%] md:pl-5 lg:pl-20 xl:w-[27%] xl:pl-5">
 						{isLoading ? (
 							<p className="mt-[80%] text-center">Loading...</p>
 						) : videoAsset ? (
@@ -123,7 +123,7 @@ const Upload = () => {
 						)}
 					</section>
 
-					<section className="mt-5 w-8/12 text-black">
+					<section className="mt-5 text-black sm:w-8/12">
 						<div>
 							<div>
 								<label className="font-semibold">Caption</label>
@@ -152,13 +152,13 @@ const Upload = () => {
 							</div>
 
 							<div className="mt-12 flex gap-x-6 font-semibold">
-								<button className="rounded border-2 border-gray-300 px-16 py-2 hover:bg-gray-100">
+								<button className="rounded border-2 border-gray-300 px-8 py-2 hover:bg-gray-100 sm:px-16">
 									Discard
 								</button>
 								<button
 									disabled={videoAsset?.url ? false : true}
 									onClick={handlePost}
-									className="rounded bg-orange-500 px-20 py-2 text-white hover:bg-orange-600 disabled:bg-gray-400">
+									className="rounded bg-orange-500 px-11 py-2 text-white hover:bg-orange-600 disabled:bg-gray-400 sm:px-20">
 									{posting ? "loading..." : "Post"}
 								</button>
 							</div>
