@@ -11,7 +11,7 @@ export default function Home({ videosPosted }) {
 					<VideoCard key={index} videoPosted={videoPosted} />
 				))
 			) : (
-				<NoResult />
+				<NoResult text="No Videos" />
 			)}
 		</div>
 	);

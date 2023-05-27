@@ -71,7 +71,7 @@ const SearchPage = ({ searchVideosResult }) => {
 							</div>
 						))
 					) : (
-						<NoResult />
+						<NoResult text="No Accounts" />
 					)}
 				</section>
 			) : searchVideosResult?.length ? (
@@ -81,7 +81,7 @@ const SearchPage = ({ searchVideosResult }) => {
 					))}
 				</article>
 			) : (
-				<NoResult />
+				<NoResult text="No Videos" />
 			)}
 		</div>
 	);

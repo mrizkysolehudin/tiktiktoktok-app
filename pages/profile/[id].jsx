@@ -62,7 +62,7 @@ const Profile = ({ data }) => {
 						</div>
 					))
 				) : (
-					<NoResult />
+					<NoResult text="No Videos" />
 				)}
 			</section>
 		</div>

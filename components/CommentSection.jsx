@@ -54,7 +54,7 @@ const CommentSection = ({
 						</div>
 					))
 				) : (
-					<NoResult />
+					<NoResult text="No Comments yet" />
 				)}
 			</section>
 
