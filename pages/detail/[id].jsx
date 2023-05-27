@@ -23,6 +23,8 @@ const Detail = ({ detailPost }) => {
 	const videoRef = useRef();
 	const { userProfile } = useAuthStore();
 
+	console.log(detailPost);
+
 	const handlePlayVideo = () => {
 		if (playing) {
 			videoRef.current.pause();
